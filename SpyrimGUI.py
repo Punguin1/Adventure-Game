@@ -13,6 +13,7 @@ is_running = True
 clock = pygame.time.Clock()
 manager = pgui.UIManager((800, 600))
 
+hello_button = pgui.elements.UIButton(relative_rect=pygame.Rect((350, 275), (100, 50)),
                                              text='Say Hello',
                                              manager=manager)
 while is_running:
