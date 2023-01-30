@@ -48,7 +48,8 @@ death = """\n
   `:::::`::::::::;' /  / `:#
    ::::::`:::::;'  /  /   `#
 """
-cs(intro + "\nPress enter to start. if you cant figure out what to do, read the code", [""], 0)
+
+cs(intro + "\nPress enter to start. if you cant figure out what to do, read the code", [""], 0, False)
 
 preAns = cs("You sneak around outside of the castle and meet with a tall wall made of stone bricks. You look closer and see some bricks are conveniently sticking out of the wall", ["climb", "scale"])
 
