@@ -1,4 +1,7 @@
-import time, sys
+import sys
+import time
+
+
 def print_slow(str, speed=0.00001):
     for letter in str:
         sys.stdout.write(letter)
