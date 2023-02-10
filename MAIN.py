@@ -54,7 +54,7 @@ def checkUserInput(inputList, displayOptions=True):
 def main():
     # Introduction
     clearCmdText()
-    print(largeText["OUTLAW"])
+    print(largeText["SPYRIM"])
     #print(largeText["SPYRIM"])
     slowPrint("\nPress enter to start.")
     checkUserInput([""], False)
@@ -67,6 +67,10 @@ def main():
 
     if userChoice == "Go home":
         slowPrint("You decide that this mission is not worth the risk. You go home and spend the rest of your life happily, not regretting the decision you made that day. (GOOD ENDING) ")
+        time.sleep(5)
+        clearCmdText()
+        print(largeText["SUNSET"])
+        time.sleep(4)
         exit()
     if userChoice == "Climb":
         slowPrint("You climb up the wall using the bricks that are sticking out. As you reach the top, you notice a balcony a jump away from where you are.")
@@ -113,6 +117,8 @@ def main():
             
             if userChoice == "Sneak through the door":
                 slowPrint("You sneak through the door with the guard still asleep. You walk through a hallway with extravagant art and pottery, until you reach the only door in the hallway. You slowly open the door and the two guards right outside the door immediately notice you. They point their spears at you and are immediately arrested for breaking in to the castle. They take all of your belongings and lock you up in the castle's dungeon. (BAD ENDING) ")
+                time.sleep(8)
+                print(largeText["IMPRISONED"])
                 
 
 
