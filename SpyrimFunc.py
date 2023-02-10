@@ -4,19 +4,29 @@ def print_slow(str, speed=0.00001):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(speed)
+    print()
 
+'''
+TODO
+Replace input with multiple choice
+Add color to text
 
-
+'''
 # Checks if string contains item in list, then returns the input as a list
-def checkStr(dialogue, input_list, speed=0.00001, addText=True):
+def checkStr(dialogue, inputList, speed=0.00001, addText=True):
     flag = False
     while flag == False:
         print_slow(dialogue, speed)
+        for i in range(len(inputList)):
+            print(str(i+1) + ". " + str(inputList[i]))
         if addText == True: test_string = input("\nWhat will you do?\n")
-        test_list = test_string.split(" ")
-        for i in test_list:
-            for j in input_list:
-                if i==j:
+        testList = test_string.split(" ")
+
+
+
+        for i in testList:
+            for j in inputList:
+                if i==j or int(testList) > 0 and int(testList) <= len(inputList):
                     flag = True
                     return j
         if flag == False:

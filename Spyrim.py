@@ -1,6 +1,6 @@
-from SpyrimFunc import checkStr as cs
 from SpyrimFunc import print_slow
-import random
+from SpyrimFunc import checkStr as cs
+import cmd, sys, textwrap
 
 intro = """\n
 
