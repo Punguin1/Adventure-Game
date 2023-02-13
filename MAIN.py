@@ -51,16 +51,16 @@ def checkUserInput(inputList, displayOptions=True):
         if flag == False:
             slowPrint("Invalid Input: " + str(userInput))
 
-def main():
+def main():  
     # Introduction
     clearCmdText()
     print(largeText["SPYRIM"])
-    #print(largeText["SPYRIM"])
-    slowPrint("\nPress enter to start.")
+    slowPrint("")
+    slowPrint("Press enter to start.")
     checkUserInput([""], False)
     clearCmdText()
     
-    slowPrint("You sneak around outside of the castle and meet with a tall wall made of stone bricks. You look closer and see some bricks are conveniently sticking out of the wall")
+    slowPrint("A few days ago, a client contacted you for a new job involving the King. He will give you a handsome reward if you were to assassinate the king for him, to advance his political career. With newfound motivation, you set off with equipment fit for the job and head straight to the castle. You sneak around outside of the castle and meet with a tall wall made of stone bricks. You look closer and see some bricks are conveniently sticking out of the wall")
     # First choice
     userChoice = checkUserInput(["Go home", "Climb"])
     clearCmdText()
@@ -76,7 +76,8 @@ def main():
         slowPrint("You climb up the wall using the bricks that are sticking out. As you reach the top, you notice a balcony a jump away from where you are.")
         userChoice = checkUserInput(["Do a flip", "Jump across sneakily"])
         clearCmdText()
-
+        if userChoice == "Do a flip":
+            slowPrint("You flip across and hit your head on the railing of the balcony. You fall to your death. To be fair, it was a sick flip.")
         if userChoice == "Jump across sneakily":
             slowPrint("You jump across the gap and reach the balcony of the castle. You look inside the room and see a large library with few signs of life. To the left you see the only person in this entire room. He is sitting on a chair with a table in front and newspaper over their head to hide the fact that he is sleeping on his job. When you saw that it was safe, you silently enter the room. Behind the guard there is a vent, and to the right of him there is an exit door.")
             # Second Choice
@@ -119,6 +120,7 @@ def main():
                 slowPrint("You sneak through the door with the guard still asleep. You walk through a hallway with extravagant art and pottery, until you reach the only door in the hallway. You slowly open the door and the two guards right outside the door immediately notice you. They point their spears at you and are immediately arrested for breaking in to the castle. They take all of your belongings and lock you up in the castle's dungeon. (BAD ENDING) ")
                 time.sleep(8)
                 print(largeText["IMPRISONED"])
+                time.sleep(6)
                 
 
 
