@@ -4,16 +4,10 @@ import time
 
 from LargeText import largeText
 
-"""
-TODO
-Fix the checkuserinput for it to correctly read lowercased inputs. 
-Make player goals clearer
-"""
-
 def clearCmdText(): # Clears all text on the command line interface, making it cleaner
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def slowPrint(str, speed=0.00001): # Slowly prints out text
+def slowPrint(str, speed=0.01): # Slowly prints out text
     for letter in str:
         sys.stdout.write(letter)
         sys.stdout.flush()
@@ -30,8 +24,7 @@ def checkUserInput(inputList, displayOptions=True):
                 j = j+1
                 slowPrint(str(j) + ". " + str(i))
 
-        userInput = input("> ").lower()
-        userList = userInput.split(" ") # Converts string into a list
+        userInput = input("> ").lower() # Takes in input and lowers it
 
         try:        # Checks if the userInput is an integer or not
             int(userInput)
@@ -43,11 +36,10 @@ def checkUserInput(inputList, displayOptions=True):
             if int(userInput) > 0 and int(userInput) <= len(inputList):
                 return inputList[int(userInput) - 1]
 
-        else: # Takes in userList and checks if it matches with one of the available answers
-            for i in userList:
-                for j in inputList:
-                    if i == j:
-                        return j
+        else: # Takes in userList and checks if it matches with one of the available answers:
+            for i in range(len(inputList)):
+                if userInput == inputList[i].lower():
+                    return inputList[i]
         if flag == False:
             slowPrint("Invalid Input: " + str(userInput))
 
@@ -56,7 +48,7 @@ def main():
     clearCmdText()
     print(largeText["SPYRIM"])
     slowPrint("")
-    slowPrint("Press enter to start.")
+    slowPrint("Press enter to start the game.")
     checkUserInput([""], False)
     clearCmdText()
     
@@ -67,17 +59,18 @@ def main():
 
     if userChoice == "Go home":
         slowPrint("You decide that this mission is not worth the risk. You go home and spend the rest of your life happily, not regretting the decision you made that day. (GOOD ENDING) ")
-        time.sleep(5)
+        time.sleep(7)
         clearCmdText()
         print(largeText["SUNSET"])
-        time.sleep(4)
+        time.sleep(15)
         exit()
     if userChoice == "Climb":
         slowPrint("You climb up the wall using the bricks that are sticking out. As you reach the top, you notice a balcony a jump away from where you are.")
         userChoice = checkUserInput(["Do a flip", "Jump across sneakily"])
         clearCmdText()
         if userChoice == "Do a flip":
-            slowPrint("You flip across and hit your head on the railing of the balcony. You fall to your death. To be fair, it was a sick flip.")
+            slowPrint("You flip across and hit your head on the railing of the balcony. You fall to your death. To be fair, it was a sick flip. ")
+            time.sleep(7)
         if userChoice == "Jump across sneakily":
             slowPrint("You jump across the gap and reach the balcony of the castle. You look inside the room and see a large library with few signs of life. To the left you see the only person in this entire room. He is sitting on a chair with a table in front and newspaper over their head to hide the fact that he is sleeping on his job. When you saw that it was safe, you silently enter the room. Behind the guard there is a vent, and to the right of him there is an exit door.")
             # Second Choice
@@ -90,11 +83,11 @@ def main():
                 userChoice = checkUserInput(["Fight the guards", "Sneak away and chase after the king"])
                 clearCmdText()
                 if userChoice == "Fight the guards":
-                    slowPrint("You try to fight the guards and you realize they are the king's guards for a reason. You realize how stupid it is to try to kill multiple military, high ranked, royal, ARMED guards. You are immediately skewered by their spears at the first sign of threat.")
-                    time.sleep(3)
+                    slowPrint("You try to fight the guards and you realize they are the king's guards for a reason. You realize how stupid it is to try to kill multiple military, high ranked, royal, ARMED guards. You are immediately skewered by their spears at the first sign of threat. (DEAD END)")
+                    time.sleep(7)
                     clearCmdText()
                     print(largeText["DEATH"])
-                    time.sleep(3)
+                    time.sleep(15)
                     exit()
 
                 if userChoice == "Sneak away and chase after the king":
@@ -104,23 +97,24 @@ def main():
 
                     if userChoice == "Escape through the exit door":
                         slowPrint("You run towards the exit doors and swiftly go through them. You briefly look and realize its the exterior of the castle, right above the tall wall. With quick thinking, you take out your grappling hook and attach it to the railing. While holding the rope, you rappel down the vertical wall and escape the castle. This peace would not last long, as you are a wanted man in this kingdom. With no one wanting to associate with a criminal, you live the rest of your life as an outlaw to the kingdom. (OUTLAW ENDING) ")
-                        time.sleep(8)
+                        time.sleep(7)
                         clearCmdText()
                         print(largeText["OUTLAW"])
-                        time.sleep(3)
+                        time.sleep(15)
                         exit()
                 
                     if userChoice == "Chase after the king":
                         slowPrint("You chase after the king, fighting the guards along the way. The guards are more focused on keeping you away from the King. You briefly fight for way of passage and when they seemed most vulnerable you throw a knife to both of their necks, killing them instantly. After picking up one of the spears, you chase after the king and impale him right then and there. With no time to feel accomplished on a job well done, you run away and escape from the castle. Your client pays you with enough money to last 3 lifetimes and you live the rest of your life in luxury. (BLOODY LUXURY ENDING)")
-                        time.sleep(6)
+                        time.sleep(7)
                         clearCmdText()
                         print(largeText["BLOOD"])
+                        time.sleep(15)
             
             if userChoice == "Sneak through the door":
                 slowPrint("You sneak through the door with the guard still asleep. You walk through a hallway with extravagant art and pottery, until you reach the only door in the hallway. You slowly open the door and the two guards right outside the door immediately notice you. They point their spears at you and are immediately arrested for breaking in to the castle. They take all of your belongings and lock you up in the castle's dungeon. (BAD ENDING) ")
-                time.sleep(8)
+                time.sleep(7)
                 print(largeText["IMPRISONED"])
-                time.sleep(6)
+                time.sleep(15)
                 
 
 
