@@ -45,12 +45,15 @@ def checkUserInput(inputList, displayOptions=True):
 
 def main():  
     # Introduction
+    userChoice = None
     clearCmdText()
     print(largeText["SPYRIM"])
     slowPrint("")
-    slowPrint("Press enter to start the game.")
-    checkUserInput([""], False)
+    slowPrint("Press enter to start the game, or type quit to end it.")
+    userChoice = checkUserInput(["", "Quit"], False)
     clearCmdText()
+    if userChoice == "Quit":
+        quit()
     
     slowPrint("A few days ago, a client contacted you for a new job involving the King. He will give you a handsome reward if you were to assassinate the king for him, to advance his political career. With newfound motivation, you set off with equipment fit for the job and head straight to the castle. You sneak around outside of the castle and meet with a tall wall made of stone bricks. You look closer and see some bricks are conveniently sticking out of the wall")
     # First choice
@@ -63,7 +66,7 @@ def main():
         clearCmdText()
         print(largeText["SUNSET"])
         time.sleep(15)
-        exit()
+        return
     if userChoice == "Climb":
         slowPrint("You climb up the wall using the bricks that are sticking out. As you reach the top, you notice a balcony a jump away from where you are.")
         userChoice = checkUserInput(["Do a flip", "Jump across sneakily"])
@@ -71,6 +74,7 @@ def main():
         if userChoice == "Do a flip":
             slowPrint("You flip across and hit your head on the railing of the balcony. You fall to your death. To be fair, it was a sick flip. ")
             time.sleep(7)
+            return
         if userChoice == "Jump across sneakily":
             slowPrint("You jump across the gap and reach the balcony of the castle. You look inside the room and see a large library with few signs of life. To the left you see the only person in this entire room. He is sitting on a chair with a table in front and newspaper over their head to hide the fact that he is sleeping on his job. When you saw that it was safe, you silently enter the room. Behind the guard there is a vent, and to the right of him there is an exit door.")
             # Second Choice
@@ -88,7 +92,7 @@ def main():
                     clearCmdText()
                     print(largeText["DEATH"])
                     time.sleep(15)
-                    exit()
+                    return
 
                 if userChoice == "Sneak away and chase after the king":
                     slowPrint("You throw a smoke bomb, stunning the guards, and chase after the king, who is pulling a lever behind the throne. You see a passage open behind the throne and the king go inside of it. Suddenly, two guards appear and block your way towards the passage. You look around and notice an exit door free from any guards, but it would mean abandoning your mission. The more you hesitate, the more the king gets away.")
@@ -101,20 +105,21 @@ def main():
                         clearCmdText()
                         print(largeText["OUTLAW"])
                         time.sleep(15)
-                        exit()
+                        return()
                 
                     if userChoice == "Chase after the king":
                         slowPrint("You chase after the king, fighting the guards along the way. The guards are more focused on keeping you away from the King. You briefly fight for way of passage and when they seemed most vulnerable you throw a knife to both of their necks, killing them instantly. After picking up one of the spears, you chase after the king and impale him right then and there. With no time to feel accomplished on a job well done, you run away and escape from the castle. Your client pays you with enough money to last 3 lifetimes and you live the rest of your life in luxury. (BLOODY LUXURY ENDING)")
                         time.sleep(7)
                         clearCmdText()
                         print(largeText["BLOOD"])
-                        time.sleep(15)
+                        time.sleep(10)
             
             if userChoice == "Sneak through the door":
                 slowPrint("You sneak through the door with the guard still asleep. You walk through a hallway with extravagant art and pottery, until you reach the only door in the hallway. You slowly open the door and the two guards right outside the door immediately notice you. They point their spears at you and are immediately arrested for breaking in to the castle. They take all of your belongings and lock you up in the castle's dungeon. (BAD ENDING) ")
                 time.sleep(7)
                 print(largeText["IMPRISONED"])
-                time.sleep(15)
+                time.sleep(10)
+                return
                 
 
 
@@ -126,6 +131,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    while True:
+        main()
 
     
